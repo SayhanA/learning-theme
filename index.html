@@ -1,20 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning Theme</title>
-    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Learning Theme is a simple and clean HTML template designed for beginners to practice web development. Perfect for learning HTML structure, responsive design basics, and website layout creation.">
-
-</head>
-<body>
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <meta
+      name="description"
+      content="Learning Theme is a simple and clean HTML template designed for beginners to practice web development. Perfect for learning HTML structure, responsive design basics, and website layout creation."
+    />
+  </head>
+  <body>
+    <header>
+      <img
+        src="./assets/leaf.png"
+        alt="Learning Theme Logo"
+        width="50"
+        height="50"
+      />
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <p>time: <span id="clock"></span></p>
+    </header>
     <main>
-        <h1>Welcome to the Learning Theme</h1>
-        <p>This is a simple HTML template for learning purposes.</p>
+      <h1>Welcome to the Learning Theme</h1>
+      <p>This is a simple HTML template for learning purposes.</p>
     </main>
+
     <script>
-        
+      function updateClock() {
+        const now = new Date();
+
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        let seconds = now.getSeconds();
+
+        let ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12; // 0 becomes 12
+
+        hours = String(hours).padStart(2, "0");
+        minutes = String(minutes).padStart(2, "0");
+        seconds = String(seconds).padStart(2, "0");
+
+        document.getElementById("clock").textContent =
+          `${hours}:${minutes}:${seconds} ${ampm}`;
+      }
+
+      setInterval(updateClock, 1000);
+      updateClock();
     </script>
-</body>
+  </body>
 </html>
